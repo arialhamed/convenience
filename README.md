@@ -32,7 +32,19 @@ Edit: It may not work for some reason.. I made it so that it works afterwards bu
 
 ### start.sh (personal)
 This is my personal login script that I use when I daily my Kubuntu on my X230. The script makes use of my fingerprint reader, sends a notif that it is working after I log in. After I let it read my fingerprint, it will continue to fulfil the rest of the script, which are the following functions:
-- Disable keyring module in Python (_does not work, for now_)
+- Starts Waydroid session
+- Organizes and moves files from home directory & Downloads directory to other folders in the system
 - Update packages (_requires internet connection_)
 - Set battery start &amp; stop thresholds by **75%** &amp; **85%** _respectively_
-- Rip _r/thinkpad_ with [ripme.jar](https://github.com/ripmeapp/ripme) (_requires internet connection_)
+- Rip multiple Reddit subreddits and users with [ripme.jar](https://github.com/ripmeapp/ripme) (_requires internet connection_)
+
+### instagram_comment_purge
+This is a very jank tool that clears every single comment that you have probably carelessly created at some point in the past in Instagram. Sometimes maybe you were too heated when reading a post, or you thought of a very clever but risky joke in the comments section. However, **employers can look at your internet footprint**, especially those from bigger companies. Their search engines are insane when it comes to background checks, so feel free to use this tool. 
+
+To be honest, I am not sure if it would work for everyone, you may need to edit each XPath value again, since Meta is apparently anti-scraping. 
+
+``` bash
+python3 timestamp.py <USERNAME> <PASSWORD>
+```
+
+This Python script expects user to be in Ubuntu 22.04 (in any flavour) and have Firefox Marionette installed, though with some minor edits this script can be used in Windows as well.
