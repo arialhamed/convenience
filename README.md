@@ -1,5 +1,5 @@
 # convenience
-Automation &amp; convenience tools with python, at its finest. The ones labelled with "personal" are those that I use personally (of course) though you can also use it and adjust it according to your own scope.
+Automation &amp; convenience tools with python, at its finest. The ones labelled with "personal" are those that I use personally (of course) though you can also use it and adjust it according to your own scope. 
 
 ### update-git.sh
 Automatically updates your remote repository **&** your local repository. This is useful for me as sometimes I am just not feeling it one day, and I can't just make up of a good commit message. By default it will use the current datetime as the commit message but you can also add in your own, as such:
@@ -44,7 +44,18 @@ This is a very jank tool that clears every single comment that you have probably
 To be honest, I am not sure if it would work for everyone, you may need to edit each XPath value again, since Meta is apparently anti-scraping. 
 
 ``` bash
-python3 timestamp.py <USERNAME> <PASSWORD>
+python3 instagram_comment_purge.py <USERNAME> <PASSWORD>
 ```
 
 This Python script expects user to be in Ubuntu 22.04 (in any flavour) and have Firefox Marionette installed, though with some minor edits this script can be used in Windows as well.
+
+### split_video.py
+This script looks at the current directory and all current subdirectories, pick out which .mp4 files are larger than 100MB, then use mkvtools's mkvmerge command to split it by 100MB. Useful for when you have videos that you want to save to a github repo but it's larger than 100MB. You can absolutely tune it to your own specifications for other purposes.
+
+Just chmod it then run it. Note that this only works for MKVs and MP4s. 
+
+``` bash
+chmod split_video.py
+./split_video.py
+```
+
