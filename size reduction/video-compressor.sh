@@ -1,8 +1,9 @@
 #!/bin/bash
 #
-# Re-encode a video to a target size in MB.
+# This script re-encodes a video to a target size in MB.
 # Example:
 #    ./this_script.sh video.mp4 15
+# Works in Linux
 
 T_SIZE="$2" # target size in MB
 T_FILE="${1%.*}-$2MB.mp4" # filename out

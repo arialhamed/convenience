@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# This script splits videos into a set size. Default here splits videos to 93M, configurable. 
+# Works in Linux, may work for Windows & Mac if mkvtools (mkvmerge) is in PATH
+
 import os
 # from tqdm import tqdm
 

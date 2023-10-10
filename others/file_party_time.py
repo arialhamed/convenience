@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+
+# This script will organize all your very, very important files /s
+# Works in Linux
+
 import os
 from random import random, randint
 # run at own risk lmao

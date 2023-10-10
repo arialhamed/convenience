@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# This speeds up git for you sooo fast. Not only does this pull, create a commit, & push it, but this also checks for any file over 100M.
+# The only limitation of this script (as of 2023 Oct 10) is that it cannot detect if the commit packet is more than 2GB.
+# Works for Linux, may work for Windows & Mac
+
 if [ $(find "`pwd`" -type f -size +100M ! -path '*/.git/*' | wc -l) -eq 0 ]; then
 	dt=$(date '+%d-%b-%Y %H:%M:%S');
 	echo "creating commit on \"$dt\""

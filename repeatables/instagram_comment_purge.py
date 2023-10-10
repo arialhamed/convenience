@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+
+# This script will save you from any horrors if you want to avoid having bad background check results. 
+# All this needs from you is your username & password:
+# 	python3 instagram_comment_purge.py <USERNAME> <PASSWORD>
+# Works in Linux, needs Firefox (you can just edit this to work for other browsers)
+
 # Get credentials
 import sys
 val_username = sys.argv[1]
