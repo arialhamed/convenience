@@ -35,6 +35,9 @@ sudo flatpak install flathub org.ppsspp.PPSSPP -y
 echo -e "\nInstalling melonDS"
 sudo flatpak install flathub net.kuribo64.melonDS -y
 
+echo -e "\nInstalling xemu"
+sudo flatpak install -y app.xemu.xemu
+
 echo -e "\nInstalling snaps"
 sudo snap install pdftk zoom-client openjdk gzdoom yt-dlg dolphin-emulator mgba
 sudo snap install sublime-text --classic
@@ -75,6 +78,7 @@ echo "alias hw-probe='sudo -E hw-probe --all --upload'" >> ~/.bashrc
 echo "alias grabber='flatpak run org.bionus.Grabber --filename \"%search%/%date:format=yyyy-MM-dd%_%md5%.%ext%\"'" >> ~/.bashrc
 echo "alias melon='flatpak run net.kuribo64.melonDS'" >> ~/.bashrc
 echo "alias {psp,ppsspp}='flatpak run org.ppsspp.PPSSPP'" >> ~/.bashrc
+echo "alias xemu='flatpak run app.xemu.xemu'" >> ~/.bashrc
 
 echo -e "\nCreating Battery Threshold script"
 sudo touch /usr/bin/batterythreshold.sh
