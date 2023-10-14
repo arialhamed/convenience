@@ -1,5 +1,5 @@
-#/bin/bash
-
+#!/usr/bin/env bash
+#
 # This is script is for whenever I need to reinstall Ubuntu from fresh. This script will take care of almost everything while it installs everything that I personally need
 # Works in Linux
 

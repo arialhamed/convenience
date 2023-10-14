@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#
 
 if [ $(find "`pwd`" -type f -size +100M ! -path '*/.git/*' | wc -l) -eq 0 ]; then
 	dt=$(date '+%d-%b-%Y %H:%M:%S');
