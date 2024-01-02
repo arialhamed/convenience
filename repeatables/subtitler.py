@@ -1,6 +1,9 @@
-from googletrans import Translator, constants
+from googletrans import Translator, constants # googletrans==3.1.0a0
 from tqdm import tqdm
 import os, sys
+
+# Checking current directory
+print(os.getcwd())
 
 # Create variables
 name_output = sys.argv[1].rsplit('.', 1)[0] + " (full sub)." + sys.argv[1].rsplit('.', 1)[1] if len(sys.argv) == 2 else sys.argv[2]
@@ -28,7 +31,7 @@ print(f"Input video: \"{sys.argv[1]}\"\nOutput video: \"{name_output}\"\n\nInput
 for lang in tqdm([x for x in list(constants.LANGUAGES.keys()) if x in list(code_dict.keys())]):
 
 	# Reads source & writes destination
-	with open(f"{code_dict[lang]}.srt", "a", encoding="utf-8") as file_output, open(f"{lang_out}.srt", "r") as file_input:
+	with open(f"{code_dict[lang]}.srt", "w", encoding="utf-8") as file_output, open(f"{lang_out}.srt", "r", encoding="utf-8") as file_input:
 
 		# Loops through lines of source
 		for i in tqdm(file_input.read().split("\n"), leave=False):
@@ -39,6 +42,7 @@ for lang in tqdm([x for x in list(constants.LANGUAGES.keys()) if x in list(code_
 					break
 				except:
 					pass
+	# quit()
 
 
 # Build FFMPEG command
@@ -46,12 +50,8 @@ for n, i in enumerate([x for x in os.listdir() if x.endswith(".srt")]):
 	array_command[0].append(f" -i {i}")
 	array_command[1].append(f" -map {n+1}")
 	array_command[2].append(f" -metadata:s:s:{n} language={i[:-4]}")
-final_command = f"ffmpeg -i \"{sys.argv[1]}\"" + "".join([x for x in array_command[0]]) + " -c:v copy -c:a copy -c:s " + ("mov_text" if sys.argv[1].endswith(".mp4") else "srt") + " -map 0:v -map 0:a" + "".join([x for x in array_command[1]]) + "".join([x for x in array_command[2]]) + f" \"{name_output}\" -hide_banner -loglevel error"
+final_command = f"ffmpeg -i \"{sys.argv[1]}\"" + "".join([x for x in array_command[0]]) + " -c:v copy -c:a copy -c:s " + ("mov_text" if name_output.endswith(".mp4") else "srt") + " -map 0:v -map 0:a" + "".join([x for x in array_command[1]]) + "".join([x for x in array_command[2]]) + f" \"{name_output}\" -hide_banner -loglevel error"
 
 # Execute command
 os.system(final_command)
 print(final_command)
-
-# Since the IO mode here uses "a", we would unfortunately need to clear all except the source language
-for i in [x for x in os.listdir() if x.endswith(".srt") and not(x.startswith(lang_out))]:
-	os.remove(i)
