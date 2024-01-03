@@ -11,27 +11,28 @@ array_command = [[],[],[]]
 translator = Translator()
 lang_out = "eng" 
 code_dict = {
-    "af": "afr", "sq": "sqi", "am": "amh", "ar": "ara", "hy": "hye", "az": "aze", "eu": "eus", "be": "bel", "bn": "ben",
-    "bs": "bos", "bg": "bul", "ca": "cat", "ny": "nya", "zh-cn": "zho", "co": "cos", "hr": "hrv", "cs": "ces",
-    "da": "dan", "nl": "nld", "eo": "epo", "et": "est", "tl": "tir", "fi": "fin", "fr": "fra", "fy": "fry", "gl": "glg",
-    "ka": "kat", "de": "deu", "el": "ell", "gu": "guj", "he": "heb", "hi": "hin",
-    "hu": "hun", "is": "isl", "id": "ind", "ga": "gle", "it": "ita", "ja": "jpn", "kn": "kan",
-    "kk": "kaz", "km": "khm", "ko": "kor", "ku": "kur", "ky": "kir", "lo": "lao", "la": "lat", "lv": "lav", "lt": "lit",
-    "lb": "ltz", "mk": "mkd", "mg": "mlg", "ms": "msa", "ml": "mal", "mi": "mal", "mr": "mar", "mn": "mon",
-    "my": "mya", "ne": "nep", "no": "nor", "or": "ori", "ps": "pus", "fa": "fas", "pl": "pol", "pt": "por", "pa": "pan",
-    "ro": "ron", "ru": "rus", "sm": "smo", "gd": "gla", "sr": "srp", "st": "sot", "sn": "sna", "sd": "snd", "si": "sin",
-    "sk": "slk", "sl": "slv", "so": "som", "es": "spa", "su": "sun", "sw": "swa", "sv": "swe", "tg": "tgk", "ta": "tam",
-    "te": "tel", "th": "tha", "tr": "tur", "uk": "ukr", "ur": "urd", "ug": "uig", "uz": "uzb", "vi": "vie", "cy": "cym",
-    "xh": "xho", "yi": "yid", "yo": "yor", "zu": "zul"
+	"af": "afr", "sq": "sqi", "am": "amh", "ar": "ara", "hy": "hye", "az": "aze", "eu": "eus", "be": "bel", "bn": "ben",
+	"bs": "bos", "bg": "bul", "ca": "cat", "ny": "nya", "zh-cn": "zho", "co": "cos", "hr": "hrv", "cs": "ces",
+	"da": "dan", "nl": "nld", "eo": "epo", "et": "est", "tl": "tir", "fi": "fin", "fr": "fra", "fy": "fry", "gl": "glg",
+	"ka": "kat", "de": "deu", "el": "ell", "gu": "guj", "he": "heb", "hi": "hin",
+	"hu": "hun", "is": "isl", "id": "ind", "ga": "gle", "it": "ita", "ja": "jpn", "kn": "kan",
+	"kk": "kaz", "km": "khm", "ko": "kor", "ku": "kur", "ky": "kir", "lo": "lao", "la": "lat", "lv": "lav", "lt": "lit",
+	"lb": "ltz", "mk": "mkd", "mg": "mlg", "ms": "msa", "ml": "mal", "mi": "mal", "mr": "mar", "mn": "mon",
+	"my": "mya", "ne": "nep", "no": "nor", "or": "ori", "ps": "pus", "fa": "fas", "pl": "pol", "pt": "por", "pa": "pan",
+	"ro": "ron", "ru": "rus", "sm": "smo", "gd": "gla", "sr": "srp", "st": "sot", "sn": "sna", "sd": "snd", "si": "sin",
+	"sk": "slk", "sl": "slv", "so": "som", "es": "spa", "su": "sun", "sw": "swa", "sv": "swe", "tg": "tgk", "ta": "tam",
+	"te": "tel", "th": "tha", "tr": "tur", "uk": "ukr", "ur": "urd", "ug": "uig", "uz": "uzb", "vi": "vie", "cy": "cym",
+	"xh": "xho", "yi": "yid", "yo": "yor", "zu": "zul"
 }
 
 print(f"Input video: \"{sys.argv[1]}\"\nOutput video: \"{name_output}\"\n\nInput language: {lang_out}")
 
 # Loops through language codes
 for lang in tqdm([x for x in list(constants.LANGUAGES.keys()) if x in list(code_dict.keys())]):
+# for lang in ["km"]:
 
 	# Reads source & writes destination
-	with open(f"{code_dict[lang]}.srt", "w", encoding="utf-8") as file_output, open(f"{lang_out}.srt", "r", encoding="utf-8") as file_input:
+	with open(f"{code_dict[lang]}.srt", "w", encoding="utf-8-sig") as file_output, open(f"{lang_out}.srt", "r", encoding="utf-8-sig") as file_input:
 
 		# Loops through lines of source
 		for i in tqdm(file_input.read().split("\n"), leave=False):
