@@ -25,11 +25,11 @@ code_dict = {
 	"xh": "xho", "yi": "yid", "yo": "yor", "zu": "zul"
 }
 
-print(f"Input video: \"{sys.argv[1]}\"\nOutput video: \"{name_output}\"\n\nInput language: {lang_out}")
+print(f"Input video: \"{sys.argv[1]}\"\nOutput video: \"{name_output}\"\n\nInput language: {lang_out}\nSource subtitle file: {os.path.abspath(lang_out+'.srt')}")
+
 
 # Loops through language codes
 for lang in tqdm([x for x in list(constants.LANGUAGES.keys()) if x in list(code_dict.keys())]):
-# for lang in ["km"]:
 
 	# Reads source & writes destination
 	with open(f"{code_dict[lang]}.srt", "w", encoding="utf-8-sig") as file_output, open(f"{lang_out}.srt", "r", encoding="utf-8-sig") as file_input:
@@ -43,11 +43,10 @@ for lang in tqdm([x for x in list(constants.LANGUAGES.keys()) if x in list(code_
 					break
 				except:
 					pass
-	# quit()
 
 
 # Build FFMPEG command
-for n, i in enumerate([x for x in os.listdir() if x.endswith(".srt")]):
+for n, i in enumerate([x for x in os.listdir() if os.path.isfile(x) and x.endswith(".srt")]):
 	array_command[0].append(f" -i {i}")
 	array_command[1].append(f" -map {n+1}")
 	array_command[2].append(f" -metadata:s:s:{n} language={i[:-4]}")
